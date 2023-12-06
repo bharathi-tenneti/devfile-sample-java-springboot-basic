@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @RestController
@@ -19,7 +20,7 @@ public class DemoApplication {
 
     @RequestMapping("/")
     String home() {
-        // Read the greeting message from a file
+        // Read the greeting message from the specified file path
         String greetingMessage = readGreetingMessageFromFile(greetingFilePath);
 
         return greetingMessage;
