@@ -17,7 +17,7 @@ spec:
         - name: "my-csi-volume"
           csi:
             driver: "csi.sharedresource.openshift.io"
-            readOnly: true
+            readOnly: True
             volumeAttributes:
               sharedSecret: "my-share"
       containers:
@@ -37,7 +37,7 @@ spec:
           volumes:
             - name: "my-csi-volume"
               mountPath: "/app/config"
-              readOnly: true
+              readOnly: True
 ---
 kind: Service
 apiVersion: v1
