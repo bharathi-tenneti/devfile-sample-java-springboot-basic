@@ -3,7 +3,7 @@ apiVersion: apps/v1
 metadata:
   name: my-java-springboot
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: java-springboot-app
