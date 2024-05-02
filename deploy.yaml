@@ -14,12 +14,12 @@ spec:
     spec:
       serviceAccount: builder
       volumes:
-        names: "my-csi-volume"
-        csi:
-          driver: "csi.sharedresource.openshift.io"
-          readOnly: "true"
-          volumeAttributes:
-            sharedSecret: "my-share"
+        - name: "my-csi-volume"
+          csi:
+            driver: "csi.sharedresource.openshift.io"
+            readOnly: "true"
+            volumeAttributes:
+              sharedSecret: "my-share"
       containers:
         - name: my-java-springboot
           image: java-springboot-image:latest
@@ -28,16 +28,16 @@ spec:
               containerPort: 8081
               protocol: TCP
           env:
-            name: "greeting.file.path"
-            value: "/app/config/greeting-message"
+           - name: "greeting.file.path"
+             value: "/app/config/greeting-message"
           resources:
             requests:
               memory: "180Mi"
               cpu: "11m"
           volumes:
-            name: "my-csi-volume"
-            mountPath: "/app/config"
-            readOnly: "true"
+            - name: "my-csi-volume"
+              mountPath: "/app/config"
+              readOnly: "true"
 ---
 kind: Service
 apiVersion: v1
