@@ -19,6 +19,9 @@ spec:
             - name: http
               containerPort: 8081
               protocol: TCP
+          env:
+            name: "greeting.file.path"
+            value: "/app/config/greeting-message"
           resources:
             requests:
               memory: "180Mi"
