@@ -28,7 +28,7 @@ components:
         rootRequired: false
   - name: kubernetes-deploy
     attributes:
-      deployment/replicas: 0
+      deployment/replicas: 1
       deployment/cpuRequest: 10m
       deployment/memoryRequest: 180Mi
       deployment/container-port: 8081
@@ -38,6 +38,7 @@ components:
         - name: http-8081
           targetPort: 8081
           path: /
+          secure: true
 commands:
   - id: build-image
     apply:
