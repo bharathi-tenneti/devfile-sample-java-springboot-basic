@@ -12,6 +12,14 @@ spec:
       labels:
         app: java-springboot-app
     spec:
+      serviceAccount: builder
+      volumes:
+        names: "my-csi-volume"
+        csi:
+          driver: "csi.sharedresource.openshift.io"
+          readOnly: "true"
+          volumeAttributes:
+            sharedSecret: "my-share"
       containers:
         - name: my-java-springboot
           image: java-springboot-image:latest
@@ -26,6 +34,10 @@ spec:
             requests:
               memory: "180Mi"
               cpu: "11m"
+          volumes:
+            name: "my-csi-volume"
+            mountPath: "/app/config"
+            readOnly: "true"
 ---
 kind: Service
 apiVersion: v1
