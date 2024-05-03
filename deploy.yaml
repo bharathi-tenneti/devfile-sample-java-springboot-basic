@@ -34,7 +34,7 @@ spec:
             requests:
               memory: "180Mi"
               cpu: "11m"
-          volumes:
+          volumeMounts:
             - name: "my-csi-volume"
               mountPath: "/app/config"
               readOnly: true
