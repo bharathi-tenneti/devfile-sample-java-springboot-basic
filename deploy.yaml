@@ -23,6 +23,10 @@ spec:
       containers:
         - name: my-java-springboot
           image: java-springboot-image:latest
+          volumeMounts:
+            - name: "my-csi-volume"
+              mountPath: "/app/config"
+              readOnly: true
           ports:
             - name: http
               containerPort: 8081
@@ -34,10 +38,6 @@ spec:
             requests:
               memory: "180Mi"
               cpu: "11m"
-          volumeMounts:
-            - name: "my-csi-volume"
-              mountPath: "/app/config"
-              readOnly: true
 ---
 kind: Service
 apiVersion: v1
